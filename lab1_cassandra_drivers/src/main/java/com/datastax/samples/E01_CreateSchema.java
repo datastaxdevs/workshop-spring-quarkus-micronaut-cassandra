@@ -25,7 +25,7 @@ public class E01_CreateSchema implements SchemaConstants {
     private static Logger LOGGER = LoggerFactory.getLogger(E01_CreateSchema.class);
     
     public static void main(String[] args) {
-        try(CqlSession cqlSession = CqlSessionProvider.getInstance().getSession()) {
+        try(CqlSession cqlSession = CqlSession.builder().build()) {
             createUdtVideoFormat(cqlSession);
             createTableUser(cqlSession);
             createTableVideo(cqlSession);

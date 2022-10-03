@@ -10,3 +10,5 @@ clear
 echo -e "${BLUE}------------------------------------------------------------${NC}"
 echo -e "${BLUE}- DRIVERS [OK]                                             -${NC}"
 echo -e "${BLUE}------------------------------------------------------------${NC}"
+
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers

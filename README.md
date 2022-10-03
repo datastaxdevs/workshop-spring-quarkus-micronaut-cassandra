@@ -118,8 +118,6 @@ Skip this step is you already have a token. You can reuse the same token in our 
 ![token](https://awesome-astra.github.io/docs/img/astra/astra-create-token.gif)
 
 
-
-
 #### `✅.setup-03`- Open Gitpod
 
 Gitpod is an IDE based on VSCode deployed in the cloud.
@@ -134,30 +132,150 @@ Gitpod is an IDE based on VSCode deployed in the cloud.
 Go back to your gitpod terminal waiting for your token. Make sure you select the `database` shell in the bottom-right panel and provide the value where it is asked.
 
 
+> 🖥️ `setup-04 output`
+>
+> ```
+> [cedrick.lunven@gmail.com]
+> ASTRA_DB_APPLICATION_TOKEN=AstraCS:AAAAAAAA
+> 
+> [What's NEXT ?]
+> You are all set.(configuration is stored in ~/.astrarc) You can now:
+>    • Use any command, 'astra help' will get you the list
+>    • Try with 'astra db list'
+>    • Enter interactive mode using 'astra'
+> 
+> Happy Coding !
+> ```
+
+
+#### `✅.setup-05`- List your existing Users.
+
+```bash
+astra user list
+```
+
+> 🖥️ `setup-05 output`
+>
+> ```
+> +--------------------------------------+-----------------------------+---------------------+
+> | User Id                              | User Email                  | Status              |
+> +--------------------------------------+-----------------------------+---------------------+
+> | b665658a-ae6a-4f30-a740-2342a7fb469c | cedrick.lunven@datastax.com | active              |
+> +--------------------------------------+-----------------------------+---------------------+
+> ```
+
+#### `✅.setup-06`- Create database `workshops` and keyspace `ks_java` if they do not exist:
+
+```bash
+astra db create workshops -k ks_java --if-not-exist --wait
+```
+
+Let's analyze the command:
+| Chunk         | Description     |
+|--------------|-----------|
+| `db create` | Operation executed `create` in group `db`  |
+| `workshops` | Name of the database, our argument |
+|`-k ks_java` | Name of the keyspace, a db can contains multiple keyspaces |
+| `--if-not-exist` | Flag for itempotency creating only what if needed |
+| `--wait` | Make the command blocking until all expected operations are executed (timeout is 180s) |
+
+> **Note**: If the database already exist but has not been used for while the status will be `HIBERNATED`. The previous command will resume the db an create the new keyspace but it can take about a minute to execute.
+
+> 🖥️ `setup-06 output`
+>
+> ```
+> [ INFO ] - Database 'workshops' already exist. Connecting to database.
+> [ INFO ] - Database 'workshops' has status 'MAINTENANCE' waiting to be 'ACTIVE' ...
+>[ INFO ] - Database 'workshops' has status 'ACTIVE' (took 7983 millis)
+> ```
+
+#### `✅.setup-07`- Check the status of database `workshops`
+
+```bash
+astra db status workshops
+```
+
+> 🖥️ `setup-07 output`
+>
+> ```
+> [ INFO ] - Database 'workshops' has status 'ACTIVE'
+> ```
+
+
+
+*Congratulations your environment is all set, let's start the labs !*
+
+# LAB 1 - Understanding Java Drivers
+
+## 1.1 - Configuration
+
+#### `✅.1.1.a`- Get the informations for your database including the keyspace list
+
+```bash
+astra db get workshops
+```
+
+> 🖥️ `output`
+>
+> ```
+> +------------------------+-----------------------------------------+
+> | Attribute              | Value                                   |
+> +------------------------+-----------------------------------------+
+> | Name                   | workshops                               |
+> | id                     | bb61cfd6-2702-4b19-97b6-3b89a04c9be7    |
+> | Status                 | ACTIVE                                  |
+> | Default Cloud Provider | AWS                                     |
+> | Default Region         | us-east-1                               |
+> | Default Keyspace       | ks_java                                 |
+> | Creation Time          | 2022-08-29T06:13:06Z                    |
+> |                        |                                         |
+> | Keyspaces              | [0] ks_java                             |
+> |                        |                                         |
+> |                        |                                         |
+> | Regions                | [0] us-east-1                           |
+> |                        |                                         |
+> +------------------------+-----------------------------------------+
+> ```
+
+#### `✅.1.1.b`- Download Secure bundle
+
+```
+astra db download-scb workshops -f /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
+```
+
+```
+ls -l /workspace/workshop-spring-quarkus-micronaut-cassandra/
+```
+
+#### `✅.1.1.c`- Register token as env variable
+
+ASTRA_DB_APP_TOKEN=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
 
 # LAB 2 - Spring Data Cassandra
 
 ## 2.1 - Configuration
 
-#### `✅.130`- Création du keyspace `devoxx_spring`
+#### `✅.2.1.a`- Create keyspace `ks_spring`
 
-_Dans Docker:_
-
-```sql
-CREATE KEYSPACE IF NOT EXISTS devoxx_spring
-WITH REPLICATION = {
-  'class' : 'NetworkTopologyStrategy',
-  'dc1' : 3
-}  AND DURABLE_WRITES = true;
+```bash
+astra db create-keyspace workshops -k ks_spring
 ```
 
-Avec Astra, la manipulation des keyspaces est désactivé, c'est lui qui fixe les facteurs de réplications pour vous (Saas). La procédure est décrite en détail dans [Awesome Astra](https://awesome-astra.github.io/docs/pages/astra/faq/#how-do-i-create-a-namespace-or-a-keyspace) mais voici quelques captures:
+#### `✅.2.1.a`- list Keyspaces
 
-_Repérer le bouton `ADD KEYSPACE`_
-![](https://awesome-astra.github.io/docs/img/faq/create-keyspace-button.png)
+```bash
+astra db list-keyspaces workshops
+```
 
-_Créer le keyspace `devoxx_spring` et valider avec `SAVE`_
-![](https://awesome-astra.github.io/docs/img/faq/create-keyspace.png)
+> 🖥️ `output`
+>
+> ```
+> +---------------------+
+> | Name                |
+> +---------------------+
+> | ks_spring           |
+> | ks_java (default)   |
+> +---------------------+
 
 #### 📘 Ce qu'il faut retenir:
 

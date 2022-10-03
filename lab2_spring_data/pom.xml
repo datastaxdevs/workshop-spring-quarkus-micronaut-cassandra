@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.datastax.workshop</groupId>
-	<artifactId>lab5-spring-data</artifactId>
+	<artifactId>lab2-spring-data</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lab5-spring-data</name>
+	<name>lab2-spring-data</name>
 	<description>TodoBackend Spring Boot Microservices with Spring Data for Apache Cassandra</description>
 
 	<properties>

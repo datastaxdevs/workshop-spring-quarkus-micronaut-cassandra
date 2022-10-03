@@ -19,7 +19,7 @@ public class E02_Statements implements SchemaConstants {
     private static Logger LOGGER = LoggerFactory.getLogger(E01_CreateSchema.class);
     
     public static void main(String[] args) {
-        try(CqlSession cqlSession = CqlSessionProvider.getInstance().getSession()) {
+        try(CqlSession cqlSession = CqlSession.builder().build()) {
             
             // #1.a Execution de requete en chaine de caracteres 
             
