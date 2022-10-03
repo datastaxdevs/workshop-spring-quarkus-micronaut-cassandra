@@ -109,11 +109,9 @@ we have you covered. In this repository, you'll find everything you need for thi
 Skip this step is you already have a token. You can reuse the same token in our other workshops, too. Your token should look like: `AstraCS:....`
 ```
 
-
 |Field|Value|
 |---|---|
-|**Role**| `Database Administrator`|
-
+|**Role**| `Database Administrator` |
 
 ![token](https://awesome-astra.github.io/docs/img/astra/astra-create-token.gif)
 
@@ -130,7 +128,6 @@ Gitpod is an IDE based on VSCode deployed in the cloud.
 #### `✅.setup-04`- Setup Astra CLI
 
 Go back to your gitpod terminal waiting for your token. Make sure you select the `database` shell in the bottom-right panel and provide the value where it is asked.
-
 
 > 🖥️ `setup-04 output`
 >
@@ -202,7 +199,6 @@ astra db status workshops
 > ```
 
 
-
 *Congratulations your environment is all set, let's start the labs !*
 
 # LAB 1 - Understanding Java Drivers
@@ -267,7 +263,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E00_TestConnec
 #### `✅.1.2.b`- Create Schema
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E01_CreateSchema.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E01_CreateSchema
 ```
@@ -275,7 +271,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E01_CreateSche
 #### `✅.1.2.c`- About Statements
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E02_Statements.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E02_Statements
 ```
@@ -283,7 +279,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E02_Statements
 #### `✅.1.2.d`- CRUD
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E03_OperationsCrudStatements.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E03_OperationsCrud
 ```
@@ -291,7 +287,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E03_Operations
 #### `✅.1.2.e`- Batches
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E04_Batches.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E04_Batches
 ```
@@ -299,7 +295,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E04_Batches
 #### `✅.1.2.f`- Paging
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E05_Paging.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E05_Paging
 ```
@@ -307,7 +303,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E05_Paging
 #### `✅.1.2.g`- Collections: List,Set,Map,Udt
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E06_ListSetMapAndUdt.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E06_ListSetMapAndUdt
 ```
@@ -315,7 +311,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E06_ListSetMap
 #### `✅.1.2.h`- Working with Json
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E07_Json.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E07_Json
 ```
@@ -323,7 +319,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E07_Json
 #### `✅.1.2.i`- Asynchronous Programming
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E08_Async.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E08_Async
 ```
@@ -331,7 +327,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E08_Async
 #### `✅.1.2.j`- Reactive Programming
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E09_Reactive.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E09_Reactive
 ```
@@ -339,7 +335,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E09_Reactive
 #### `✅.1.2.k`- Counters
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E10_Counters.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E10_Counters
 ```
@@ -347,7 +343,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E10_Counters
 #### `✅.1.2.l`- LightWeight Transactions
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E11_LightweightTransactions.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E11_LightweightTransactions
 ```
@@ -355,11 +351,10 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E11_Lightweigh
 #### `✅.1.2.m`- Object Mapping
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E12_ObjectMapping.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E12_ObjectMapping
 ```
-
 
 # LAB 2 - Spring Data Cassandra
 
@@ -428,16 +423,6 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/
 mvn test -Dtest=com.datastax.workshop.E01_SpringDataInit
 ```
 
-> 🖥️ `Logs`
-> ```
-> 13:49:30.253 INFO  com.datastax.workshop.E01_SpringDataInit      : Starting E01_SpringDataInit using Java 17.0.1 on clunven-rmbp16 with PID 33320 (started by cedricklunven in /Users/cedricklunven/dev/workspaces/datastax/conference-2022-devoxx/labs/2-spring-data)
-> 13:49:30.255 INFO  com.datastax.workshop.E01_SpringDataInit      : No active profile set, falling back to default profiles: default
-> 13:49:34.035 INFO  com.datastax.workshop.E01_SpringDataInit      : Started E01_SpringDataInit in 3.965 seconds (JVM running for 4.659)
-> 13:49:34.329 INFO  com.datastax.workshop.E01_SpringDataInit      : Creating your CqlSession to Cassandra...
-> 13:49:34.329 INFO  com.datastax.workshop.E01_SpringDataInit      : + [OK] Your are connected to keyspace > devoxx_spring
-> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.604 s - in com.datastax.workshop.E01_SpringDataInit
-> ```
-
 ## 2.2 - Crud Repositories
 
 - Given a table 
@@ -505,32 +490,12 @@ mvn test -Dtest=com.datastax.workshop.E02_SpringDataRepository
 #### `✅.2.2.b`- Get results from cqlsh
 
 ```
-astra db cqlsh workshops -k ks_spring
-SELECT * FROM todos;
+astra db cqlsh workshops -e "SELECT * FROM ks_spring.todos"
 ```
 
-> 🖥️ `Logs`
-> 
-> ```bash
-> token@cqlsh:ks_spring> SELECT * FROM todos;
-> 
->  uid                                  | completed | offset | title
-> --------------------------------------+-----------+--------+---------------------
-> 8a175b9e-1010-4f9a-aa5c-628c81c8dd34 |     False |      0 | Apprendre Cassandra
-> 87eb778d-a938-441e-8ff5-e69feafb8719 |     False |      0 | Apprendre Cassandra
-> 47a5c298-b6ec-4e8a-abb5-fca041730af3 |     False |      0 | Apprendre Cassandra
-> 3847d7f9-0fa3-4d7e-b7f7-b76897b4e999 |     False |      0 | Apprendre Cassandra
-> 
-> (4 rows)
-> ```
+## 2.3 - CassandraOperations
 
-## 5.3 - CassandraOperations
-
-#### 📘 Ce qu'il faut retenir:
-
-- Les `Repository` sont très puissants mais ne permettent pas tout. Le risque est de chercher à réutiliser les mêmes beans et les mêmes repositories pour différentes requêtes sur la même données alors que vous devez définir plusieurs tables.
-
-- Spring Data propose l'accès aux opérations `CqlSession` sous-jacente au travers de objets `CassandraOperations` et `CassandraTemple`. Vous pouvez les injecter lorsque vous en avez besoin. Ils sont également disponibles dans les repository si vous héritez de `SimpleCassandraRepository`.
+- `SimpleCassandraRepository` gives you access to the `CqlSession`.
 
 ```java
 @Repository
@@ -551,45 +516,13 @@ public class TodoRepositorySimpleCassandra extends SimpleCassandraRepository<Tod
 }
 ```
 
-- L'objet `CqlSession` fait partie du contexte Spring et vous pouvez également l'utiliser au besoin.
-
-#### `✅.136`- Utiliser `CassandraOperations` et un `SimpleCassandraRepository`
+#### `✅.2.3.a`- Use the SimpleCassandraRepository
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab5_spring_data
+
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/src/test/java/com/datastax/workshop/E03_SpringDataCassandraOperations.java
 mvn test -Dtest=com.datastax.workshop.E03_SpringDataCassandraOperations
-```
-
-#### 🖥️ Logs
-
-```bash
-[INFO] Running com.datastax.workshop.E03_SpringDataCassandraOperations
- ________                                  _______________   ________ ________
- \______ \   _______  _________  ______  __\_____  \   _  \  \_____  \\_____  \
- |    |  \_/ __ \  \/ /  _ \  \/  /\  \/  //  ____/  /_\  \  /  ____/ /  ____/
- |    `   \  ___/\   (  <_> >    <  >    </       \  \_/   \/       \/       \
- /_______  /\___  >\_/ \____/__/\_ \/__/\_ \_______ \_____  /\_______ \_______ \
- \/     \/                \/      \/       \/     \/         \/       \/
-
- The application will start at http://localhost:8080
-
-14:22:16.841 INFO  com.datastax.workshop.E03_SpringDataCassandraOperations : Starting E03_SpringDataCassandraOperations using Java 17.0.1 on clunven-rmbp16 with PID 33920 (started by cedricklunven in /Users/cedricklunven/dev/workspaces/datastax/conference-2022-devoxx/labs/2-spring-data)
-14:22:16.843 INFO  com.datastax.workshop.E03_SpringDataCassandraOperations : No active profile set, falling back to default profiles: default
-14:22:20.384 INFO  com.datastax.workshop.E03_SpringDataCassandraOperations : Started E03_SpringDataCassandraOperations in 3.755 seconds (JVM running for 4.457)
-14:22:20.768 INFO  com.datastax.workshop.E02_SpringDataRepository : Tache enregistree avec id e73dcd8f-4427-42ab-9e32-4db8fd1a1144
-14:22:20.769 INFO  com.datastax.workshop.E02_SpringDataRepository : Liste des Taches
-14:22:20.865 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=8a175b9e-1010-4f9a-aa5c-628c81c8dd34, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.865 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=e73dcd8f-4427-42ab-9e32-4db8fd1a1144, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.865 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=87eb778d-a938-441e-8ff5-e69feafb8719, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.865 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=47a5c298-b6ec-4e8a-abb5-fca041730af3, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.865 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=3847d7f9-0fa3-4d7e-b7f7-b76897b4e999, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.875 INFO  com.datastax.workshop.E02_SpringDataRepository : Utilisation de CassandraOperations
-14:22:20.984 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=8a175b9e-1010-4f9a-aa5c-628c81c8dd34, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.984 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=e73dcd8f-4427-42ab-9e32-4db8fd1a1144, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.984 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=87eb778d-a938-441e-8ff5-e69feafb8719, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.984 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=47a5c298-b6ec-4e8a-abb5-fca041730af3, title=Apprendre Cassandra, completed=false, order=0)
-14:22:20.984 INFO  com.datastax.workshop.E02_SpringDataRepository : TodoEntity(uid=3847d7f9-0fa3-4d7e-b7f7-b76897b4e999, title=Apprendre Cassandra, completed=false, order=0)
-[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.677 s - in com.datastax.workshop.E03_SpringDataCassandraOperations
 ```
 
 ## 5.4 - Application Spring Boot
