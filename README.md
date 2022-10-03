@@ -681,69 +681,42 @@ mvn clean compile
 
 #### `✅.4.1.d`- Testing project
 
-> 🚨 The maven test consider the bean NULL. The command below is failing
+> 🚨 The maven test consider the bean NULL. The command below is failing in gitpod.
 
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E01_MicronautInit
 ```
 
-#### 🖥️ Logs
-
-![](img/micronaut_test_01.png?raw=true)
-
-#### `✅.149` - Utilisation de `CqlSession` avec `Micronaut`
+#### `✅.4.1.e`- Use CqlSession
 
 > 🚨 The maven test consider the bean NULL. The command below is failin
 
 ```
-cd /workspace/conference-2022-devoxx/labs/lab7_micronaut
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E02_MicronautCql
 ```
 
-#### 🖥️ Logs
+## 4.2 - Configuration
 
-![](img/micronaut_test_02.png?raw=true)
-
-## 7.3 - Object Mapping
-
-#### `✅.150` - Utilisation de l'`object mapping` avec `Micronaut`
 
 > 🚨 The maven test consider the bean NULL. The command below is failin
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab7_micronaut
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E03_MicronautObjectMapping
 ```
 
-#### 🖥️ Logs
+## 4.3 - Micronaut Application
 
-![](img/micronaut_test_02.png?raw=true)
-
-## 7.4 - Application Micronaut
-
-#### `✅.151`- Démarrer l'application `micronaut`
+#### `✅.4.3.a`- Start the application
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab7_micronaut
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn clean compile exec:java
 ```
 
-#### 🖥️ Logs
-
-```
-[INFO] --- exec-maven-plugin:3.0.0:java (default-cli) @ lab7-micronaut ---
- __  __ _                                  _
-|  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_
-| |\/| | |/ __| '__/ _ \| '_ \ / _` | | | | __|
-| |  | | | (__| | | (_) | | | | (_| | |_| | |_
-|_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
-  Micronaut (v3.2.6)
-
-22:28:49.222 [com.datastaxdev.TodoApplication.main()] INFO  c.datastaxdev.TodoApplicationStartup - Startup Initialization
-22:28:50.662 [com.datastaxdev.TodoApplication.main()] INFO  c.datastaxdev.TodoApplicationStartup - + Table TodoItems created if needed.
-22:28:50.662 [com.datastaxdev.TodoApplication.main()] INFO  c.datastaxdev.TodoApplicationStartup - [OK]
-```
+#### `✅.4.3.b`- Show the Apis
 
 - Open the application API on port `8082`
 
@@ -751,29 +724,14 @@ mvn clean compile exec:java
 gp preview "$(gp url 8082)/api/v1/clun/todos/"
 ```
 
-#### `✅.151` - Test d'intégration avec `Micronaut`
+#### `✅.4.3.c`- Integration Tests
 
 Arrêter l'application en utilisant la touche `CTRL+C`. Nous pouvons terminer par un test d'intégration
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab7_micronaut
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E04_MicronautController
 ```
 
-#### 🖥️ Logs
 
-![](img/micronaut_test_04.png?raw=true)
-
----
-
-Vous êtes à la fin de la session. Félicitations !!
-
-![](img/end.gif?raw=true)
-
-#### `✅.152` - Restons connectés
-
-Si la session vous a plu.
-
-- Rejoignez mon réseau sur [linkedin](https://www.linkedin.com/in/clunven/)
-- Twittez à propos de la session avec `@clunven` et `#DevoxxFR`
-- Notez la session sur l'application `Devoxx`
+## The END.
