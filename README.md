@@ -576,6 +576,8 @@ mvn test -Dtest=com.datastax.workshop.E02_QuarkusCql
 
 ## 3.3 - Object Mapping
 
+#### `✅.3.3.a`- Object Mapping configuration
+
 - Micronaut reuses the Driver Mapper mechanism
 
 ```
@@ -583,9 +585,9 @@ cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/src/main/java/com/datastaxdev/todo/cassandra/TodoItem.java
 ```
 
-- Nous définissions une classe de service `TodoServicesCassandraOM` avec l'annotation `@ApplicationScoped` pour l'introduire dans le contexte de l'application.
+- `TodoServicesCassandraOM` is annotated with `@ApplicationScoped` to inject the class in the context
 
-- Dans le constructeur nous utilisons le `Mapper` pour instancier un `DAO` créé directement avec le driver.
+- In constructor we use `Mapper` to instanciate a `DAO` created with the driver
 
 > ```java
 > todoDao = TodoItemMapper
@@ -595,70 +597,27 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/src/
 >   .todoItemDao();
 > ```
 
-#### `✅.143` - Utilisation de l'`object mapping` avec `Quarkus`
+```
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/src/main/java/com/datastaxdev/todo/cassandra/TodoServicesCassandraOM.java
+```
+
+#### `✅.3.3.b`- Object Mapping test
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab6_quarkus
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 mvn test -Dtest=com.datastax.workshop.E03_QuarkusObjectMapping
 ```
 
-#### 🖥️ Logs
+## 3.4 - Rest Api Application
+
+#### `✅.3.4.a`- Start the application with `dev` plugin
 
 ```bash
-2022-04-19 19:27:49,029 INFO  [io.qua.arc.pro.BeanProcessor] (build-5) Found unrecommended usage of private members (use package-private instead) in application beans:
-	- @Inject field com.datastaxdev.todo.TodoRestController#cqlSession,
-	- @Inject field com.datastaxdev.todo.TodoRestController#uriInfo
-2022-04-19 19:27:49,049 WARN  [com.dat.oss.qua.dep.int.CassandraClientProcessor] (build-4) Micrometer metrics were enabled by configuration, but MicrometerMetricsFactory was not found.
-2022-04-19 19:27:49,049 WARN  [com.dat.oss.qua.dep.int.CassandraClientProcessor] (build-4) Make sure to include a dependency to the java-driver-metrics-micrometer module.
-2022-04-19 19:27:49,343 INFO  [com.dat.oss.dri.int.cor.DefaultMavenCoordinates] (main) DataStax Java driver for Apache Cassandra(R) (com.datastax.oss:java-driver-core) version 4.13.0
-2022-04-19 19:27:49,707 INFO  [com.dat.oss.qua.run.int.qua.CassandraClientStarter] (main) Eagerly initializing Quarkus Cassandra client.
-2022-04-19 19:27:50,596 INFO  [com.dat.oss.dri.int.cor.tim.Clock] (vert.x-eventloop-thread-0) Using native clock for microsecond precision
-2022-04-19 19:27:51,258 INFO  [com.dat.oss.dri.int.cor.ses.DefaultSession] (vert.x-eventloop-thread-8) [s0] Negotiated protocol version V4 for the initial contact point, but cluster seems to support V5, keeping the negotiated version
-2022-04-19 19:27:51,657 INFO  [io.quarkus] (main) Quarkus 2.3.1.Final on JVM started in 3.676s. Listening on: http://localhost:8081
-2022-04-19 19:27:51,658 INFO  [io.quarkus] (main) Profile test activated.
-2022-04-19 19:27:51,658 INFO  [io.quarkus] (main) Installed features: [cassandra-client, cdi, kubernetes, micrometer, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, smallrye-openapi, swagger-ui, vertx]
-2022-04-19 19:27:51,972 INFO  [com.dat.wor.E02_QuarkusCql] (main) Inserting Data
-2022-04-19 19:27:52,098 INFO  [com.dat.oss.dri.api.cor.uui.Uuids] (main) PID obtained through native call to getpid(): 4585
-2022-04-19 19:27:52,133 INFO  [com.dat.wor.E02_QuarkusCql] (main) + [OK]
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.458 s - in com.datastax.workshop.E03_QuarkusObjectMapping
-2022-04-19 19:27:52,154 INFO  [com.dat.oss.qua.run.int.qua.CassandraClientRecorder] (main) Closing Quarkus Cassandra session.
-2022-04-19 19:27:52,169 INFO  [io.quarkus] (main) Quarkus stopped in 0.021s
-```
-
-## 6.4 - Application Quarkus
-
-#### `✅.144` - Démarrer l'application `Quarkus`
-
-- Utiliser le plugin pour démarrer l'application en mode `dev`.
-
-```bash
-cd /workspace/conference-2022-devoxx/labs/lab6_quarkus
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 mvn quarkus:dev -DskipTests
 ```
 
-#### 🖥️ Logs
-
-```bash
-2021-12-02 17:53:52,114 WARN  [com.dat.oss.qua.dep.int.CassandraClientProcessor] (build-16) Micrometer metrics were enabled by configuration, but MicrometerMetricsFactory was not found.
-2021-12-02 17:53:52,116 WARN  [com.dat.oss.qua.dep.int.CassandraClientProcessor] (build-16) Make sure to include a dependency to the java-driver-metrics-micrometer module.
-__  ____  __  _____   ___  __ ____  ______
- --/ __ \/ / / / _ | / _ \/ //_/ / / / __/
- -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \
---\___\_\____/_/ |_/_/|_/_/|_|\____/___/
-2021-12-02 17:53:52,758 INFO  [com.dat.oss.dri.int.cor.DefaultMavenCoordinates] (Quarkus Main Thread) DataStax Java driver for Apache Cassandra(R) (com.datastax.oss:java-driver-core) version 4.13.0
-2021-12-02 17:53:53,067 INFO  [com.dat.oss.qua.run.int.qua.CassandraClientStarter] (Quarkus Main Thread) Eagerly initializing Quarkus Cassandra client.
-2021-12-02 17:53:53,919 INFO  [com.dat.oss.dri.int.cor.tim.Clock] (vert.x-eventloop-thread-0) Using native clock for microsecond precision
-2021-12-02 17:53:55,381 INFO  [com.dat.oss.dri.int.cor.ses.DefaultSession] (vert.x-eventloop-thread-8) [s0] Negotiated protocol version V4 for the initial contact point, but cluster seems to support V5, keeping the negotiated version
-**** Table created true****
-2021-12-02 17:53:56,344 INFO  [io.quarkus] (Quarkus Main Thread) javazone-3-quarkus 0.0.1-SNAPSHOT on JVM (powered by Quarkus 2.3.1.Final) started in 5.326s. Listening on: http://localhost:8080
-2021-12-02 17:53:56,346 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2021-12-02 17:53:56,346 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [cassandra-client, cdi, kubernetes, micrometer, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, smallrye-openapi, swagger-ui, vertx]
-
-Tests paused
-Press [r] to resume testing, [o] Toggle test output, [h] for more options
-```
-
-- L'application démarre et devrait apparaître le tableau de bord de dev.
+- To access the developer dashboard use on a new tab
 
 ```bash
 gp preview "$(gp url 8081)/q/dev"
@@ -667,7 +626,8 @@ gp preview "$(gp url 8081)/q/dev"
 _Dashboard_
 ![](img/quarkus-dashboard.png?raw=true)
 
-- Plusieurs plugins sont disponibles directement et notamment `swagger-ui` pour tester l'Api dans un navigateur.
+
+#### `✅.3.4.b`- Access Swagger-UI
 
 ```bash
 gp preview "$(gp url 8081)/q/swagger-ui"
@@ -675,111 +635,56 @@ gp preview "$(gp url 8081)/q/swagger-ui"
 
 ![](img/quarkus-swagger.png?raw=true)
 
-#### `✅.145` - Test d'intégration avec `Quarkus`
+#### `✅.3.4.c`- Integration Test
 
-Arrêter l'application en utilisant la touche `q`. Nous pouvons terminer par un test d'intégration
+Stop running application with `q`.
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab6_quarkus
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 mvn test -Dtest=com.datastax.workshop.E04_QuarkusController
 ```
 
-#### 🖥️ Logs
+# LAB 4 - Micronaut Cassandra
+
+## 4.1 - Configuration
+
+#### `✅.4.1.a`- Create keyspace `ks_micronaut`
 
 ```bash
-[INFO] Running com.datastax.workshop.E04_QuarkusController
-2022-04-19 21:06:43,421 INFO  [io.qua.arc.pro.BeanProcessor] (build-4) Found unrecommended usage of private members (use package-private instead) in application beans:
-	- @Inject field com.datastaxdev.todo.TodoRestController#cqlSession,
-	- @Inject field com.datastaxdev.todo.TodoRestController#uriInfo
-2022-04-19 21:06:43,444 WARN  [com.dat.oss.qua.dep.int.CassandraClientProcessor] (build-25) Micrometer metrics were enabled by configuration, but MicrometerMetricsFactory was not found.
-2022-04-19 21:06:43,444 WARN  [com.dat.oss.qua.dep.int.CassandraClientProcessor] (build-25) Make sure to include a dependency to the java-driver-metrics-micrometer module.
-2022-04-19 21:06:43,789 INFO  [com.dat.oss.dri.int.cor.DefaultMavenCoordinates] (main) DataStax Java driver for Apache Cassandra(R) (com.datastax.oss:java-driver-core) version 4.13.0
-2022-04-19 21:06:45,588 INFO  [com.dat.oss.dri.int.cor.tim.Clock] (vert.x-eventloop-thread-0) Using native clock for microsecond precision
-2022-04-19 21:06:46,307 INFO  [com.dat.oss.dri.int.cor.ses.DefaultSession] (vert.x-eventloop-thread-8) [s0] Negotiated protocol version V4 for the initial contact point, but cluster seems to support V5, keeping the negotiated version
-2022-04-19 21:06:46,696 INFO  [com.dat.oss.qua.run.int.qua.CassandraClientStarter] (main) Eagerly initializing Quarkus Cassandra client.
-2022-04-19 21:06:46,747 INFO  [io.quarkus] (main) Quarkus 2.3.1.Final on JVM started in 4.790s. Listening on: http://localhost:8081
-2022-04-19 21:06:46,748 INFO  [io.quarkus] (main) Profile test activated.
-2022-04-19 21:06:46,748 INFO  [io.quarkus] (main) Installed features: [cassandra-client, cdi, kubernetes, micrometer, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, smallrye-openapi, swagger-ui, vertx]
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.577 s - in com.datastax.workshop.E04_QuarkusController
-2022-04-19 21:06:48,222 INFO  [com.dat.oss.qua.run.int.qua.CassandraClientRecorder] (main) Closing Quarkus Cassandra session.
-2022-04-19 21:06:48,236 INFO  [io.quarkus] (main) Quarkus stopped in 0.020s
+astra db create-keyspace workshops -k ks_micronaut --if-not-exist
 ```
 
-<p/><br/>
-
-> [🏠 Retour à la table des matières](#-table-des-matières)
-
-# LAB 7 - Micronaut Cassandra
-
-## 7.1 - Introduction à Micronaut
-
-#### 📘 Ce qu'il faut retenir:
-
-- [Micronaut](https://micronaut.io/) est un framework de la JVM pour construire des microservices. Comme Quarkus il vise à construire des applications avec une empreinte mémoire faible et des démarrages ultra rapides. L'idée est de permettre le _serverless_ ainsi que des déploiements dans Kubernetes et le cloud.
-
-- L'approche est différente. Il privilégie l'Aspect Oriented Programming dès la compilation au travers d'`Annotation Processor` (oui comme les mappers). Ainsi de nombreux éléments sont construits à la compilation.
-
-- Pour démarrer avec Micronaut il est utile d'installer [la ligne de commande](https://docs.micronaut.io/latest/guide/index.html#buildCLI) avec `sdkman`.
-
-## 7.2 - Connexion et configuration
-
-#### `✅.146`- Création du keyspace `devoxx_micronaut`
-
-_Dans Docker:_
-
-```sql
-CREATE KEYSPACE IF NOT EXISTS devoxx_micronaut
-WITH REPLICATION = {
-  'class' : 'NetworkTopologyStrategy',
-  'dc1' : 3
-}  AND DURABLE_WRITES = true;
-```
-
-Avec Astra, la manipulation des keyspaces est désactivée, c'est lui qui fixe les facteurs de réplications pour vous (Saas). La procédure est décrite en détail dans [Awesome Astra](https://awesome-astra.github.io/docs/pages/astra/faq/#how-do-i-create-a-namespace-or-a-keyspace) mais voici quelques captures:
-
-_Repérer le bouton `ADD KEYSPACE`_
-![](https://awesome-astra.github.io/docs/img/faq/create-keyspace-button.png)
-
-_Créer le keyspace `devoxx_micronaut` et valider avec `SAVE`_
-![](https://awesome-astra.github.io/docs/img/faq/create-keyspace.png)
-
-#### `✅.147`- Configuration de l'application `Micronaut`
-
-- Placer vous dans le répertoire `lab7_micronaut` et compiler le projet
+#### `✅.4.1.b`- list Keyspaces
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab7_micronaut
+astra db list-keyspaces workshops
+```
+
+> 🖥️ `output`
+>
+> ```
+> +---------------------+
+> | Name                |
+> +---------------------+
+> | ks_spring           |
+> | ks_java (default)   |
+> | ks_quarkus          |
+> | ks_micronaut        |
+> +---------------------+
+
+#### `✅.4.1.c`- Compile project
+
+```bash
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn clean compile
 ```
 
-- Localiser le fichier de configuration `application.yml` dans le répertoire `src/main/resources`. C'est le fichier de configuration principal de Micronaut.
+#### `✅.4.1.d`- Testing project
 
-```bash
-gp open /workspace/conference-2022-devoxx/labs/lab7_micronaut/src/main/resources/application.yml
-```
-
-- Suivant la cible (Cassandra dans Docker ou Cassandra dans Astra) la configuration de `micronaut` changera légèrement c'est pourquoi nous avons proposé 2 exemples `application-astra.yml` et `application-local.yml`
-
-- Copier le fichier qui vous correspond vers `application.yml`
-
-```bash
-cp /workspace/conference-2022-devoxx/labs/lab7_micronaut/src/main/resources/application-astra.yml /workspace/conference-2022-devoxx/labs/lab7_micronaut/src/main/resources/application.yml
-```
-
-ou
-
-```bash
-cp /workspace/conference-2022-devoxx/labs/lab7_micronaut/src/main/resources/application-local.yml /workspace/conference-2022-devoxx/labs/lab7_micronaut/src/main/resources/application.yml
-```
-
-- Dans le cas de Astra changer la clef `cassandra.default.advanced.auth-provider.password` pour correspondre à votre base. On remarquera que Micronaut on fait le choix d'utiliser les mêmes clefs que le fichier de configuration du drivers et de ne pas réinventer la roue (merci à eux).
-
-#### `✅.148` - Validation de la configuration
-
-> 🚨 The maven test consider the bean NULL. The command below is failin
+> 🚨 The maven test consider the bean NULL. The command below is failing
 
 ```
-cd /workspace/conference-2022-devoxx/labs/lab7_micronaut
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E01_MicronautInit
 ```
 
