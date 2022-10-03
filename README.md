@@ -249,7 +249,117 @@ ls -l /workspace/workshop-spring-quarkus-micronaut-cassandra/
 
 #### `✅.1.1.c`- Register token as env variable
 
-ASTRA_DB_APP_TOKEN=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
+```
+export ASTRA_DB_APP_TOKEN=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
+echo ${ASTRA_DB_APP_TOKEN}
+```
+
+## 1.2 - Learn about drivers
+
+#### `✅.1.2.a`- Connectivity
+
+```
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E00_TestConnectivity.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E00_TestConnectivity
+```
+
+#### `✅.1.2.b`- Create Schema
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E01_CreateSchema.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E01_CreateSchema
+```
+
+#### `✅.1.2.c`- About Statements
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E02_Statements.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E02_Statements
+```
+
+#### `✅.1.2.d`- CRUD
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E02_E03_OperationsCrudStatements.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E03_OperationsCrud
+```
+
+#### `✅.1.2.e`- Batches
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E04_Batches.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E04_Batches
+```
+
+#### `✅.1.2.f`- Paging
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E05_Paging.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E05_Paging
+```
+
+#### `✅.1.2.g`- Collections: List,Set,Map,Udt
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E06_ListSetMapAndUdt.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E06_ListSetMapAndUdt
+```
+
+#### `✅.1.2.h`- Working with Json
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E07_Json.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E07_Json
+```
+
+#### `✅.1.2.i`- Asynchronous Programming
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E08_Async.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E08_Async
+```
+
+#### `✅.1.2.j`- Reactive Programming
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E09_Reactive.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E09_Reactive
+```
+
+#### `✅.1.2.k`- Counters
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E10_Counters.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E10_Counters
+```
+
+#### `✅.1.2.l`- LightWeight Transactions
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E11_LightweightTransactions.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E11_LightweightTransactions
+```
+
+#### `✅.1.2.m`- Object Mapping
+
+```bash
+cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E12_ObjectMapping.java
+mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E12_ObjectMapping
+```
+
 
 # LAB 2 - Spring Data Cassandra
 
