@@ -2,6 +2,26 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
+  - name: lab4_micronaut
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/init
+    command: |
+      ./lab4_micronaut/init
+  - name: lab3_quarkus
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/init
+    command: |
+      ./lab3_quarkus/init      
+  - name: lab2_spring_data
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/init
+    command: |
+      ./lab2_spring_data/init      
+  - name: lab1_cassandra_driver
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/init
+    command: |
+      ./lab1_cassandra_drivers/init      
   - name: database
     before: |
       printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
@@ -12,32 +32,7 @@ tasks:
     command: |
       unset JAVA_TOOL_OPTIONS
       source /home/gitpod/.astra/cli/astra-init.sh
-      export PYTHONPATH="/workspace/workshop-realtime-data-pipelines/:$PYTHONPATH"
       astra setup
-  - name: lab1_cassandra_driver
-    before: |
-      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/init
-    command: |
-      ./lab1_cassandra_drivers/init
-  - name: lab2_spring_data
-    before: |
-      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/init
-    command: |
-      ./lab2_spring_data/init
-  - name: lab3_quarkus
-    before: |
-      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/init
-    command: |
-      ./lab3_quarkus/init
-  - name: lab4_micronaut
-    before: |
-      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/init
-    command: |
-      ./labs/lab7_micronaut/init
-  - name: gp
-    command: |
-      clear
-      gp url 8080
 
   # -------------------------------------------------
   # Install Cqlsh for Astra and setup for a DB
