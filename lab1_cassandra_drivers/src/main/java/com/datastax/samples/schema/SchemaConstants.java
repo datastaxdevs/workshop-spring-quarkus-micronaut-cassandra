@@ -5,8 +5,6 @@ package com.datastax.samples.schema;
  */
 public interface SchemaConstants {
     
-	String KEYSPACE_NAME = "devoxx_drivers";
-    
     /**
      * Will be used for this table:
      * 

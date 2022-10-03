@@ -52,7 +52,7 @@ public class E06_ListSetMapAndUdt implements SchemaConstants {
             
             // User define type
             videoFormatUdt = cqlSession.getMetadata()
-                .getKeyspace(KEYSPACE_NAME)
+                .getKeyspace(cqlSession.getKeyspace().get())
                 .flatMap(ks -> ks.getUserDefinedType(UDT_VIDEO_FORMAT_NAME))
                 .orElseThrow(() -> new IllegalArgumentException("Missing UDT definition"));
             

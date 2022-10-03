@@ -284,7 +284,7 @@ mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E02_Statements
 
 ```bash
 cd /workspace/conference-2022-devoxx/labs/lab4_cassandra_drivers
-gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E02_E03_OperationsCrudStatements.java
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/src/main/java/com/datastax/samples/E03_OperationsCrudStatements.java
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E03_OperationsCrud
 ```
 

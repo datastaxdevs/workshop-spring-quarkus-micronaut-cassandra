@@ -35,7 +35,7 @@ public class E12_ObjectMapping implements SchemaConstants {
             // All logic is defined in Mapper/Dao/Entities in objectmapping package
             // Mapper required the table to exist
             CommentDao dao = CommentDaoMapper.builder(cqlSession)
-                    .withDefaultKeyspace(KEYSPACE_NAME)
+                    .withDefaultKeyspace(cqlSession.getKeyspace().get())
                     .build().commentDao();
             
             // DataSet
