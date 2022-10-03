@@ -22,9 +22,9 @@ Welcome to the *Explore SpringBoot, Quarkus and Micronaut microservices with NoS
   - [Frequently asked questions](#frequently-asked-questions)
   - [Materials for the Session](#materials-for-the-session)
 
-- [Setup your environment (DB, IDE)](#setup---initialize-your-environment)
-- [LAB1 - Understanding java drivers](#lab1---producer-and-consumer)
-- [LAB2 - Spring Boot](#lab2---pulsar-functions)
+- [Setup your environment (DB, IDE)](#setup)
+- [LAB1 - Understanding java drivers](#lab-1---understanding-java-drivers)
+- [LAB2 - Spring Boot and Spring Data Cassandra](#lab-2---spring-data-cassandra)
 - [LAB3 - Quarkus](#lab3---working-with-databases)
 - [LAB4 - Micronaut](#lab4---pulsar-io)
 - [Homework](#Homework)
@@ -302,7 +302,7 @@ astra db create-keyspace workshops -k ks_spring
 #### `✅.2.1.b`- list Keyspaces
 
 ```bash
-astra db list-keyspaces workshops --if-not-exist
+astra db list-keyspaces workshops
 ```
 
 > 🖥️ `output`
@@ -458,58 +458,36 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/
 mvn test -Dtest=com.datastax.workshop.E03_SpringDataCassandraOperations
 ```
 
-## 5.4 - Application Spring Boot
+## 2.4 - Spring Boot
 
-#### 📘 Ce qu'il faut retenir:
-
-- Les différents `Repository` peuvent être injectés dans les controllers et exposés au niveau des APIs.
-
-![](img/spring_layers.png?raw=true)
-
-Une bonne pratique est de séparer les objets utilisés dans la couche d'accès aux données (entités) des objets utilisés dans les Apis (DTO).
-
-#### `✅.137`- Lancer l'application
-
-- Démarrer l'application à l'aide du plugin `spring-boot`
+#### `✅.2.4.a`- Start application
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab5_spring_data
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data
 mvn spring-boot:run
 ```
 
-- L'application démarre sur le port `8080`. La liste des `todos` est disponible sur `http://localhost:8080/api/v1/todos/`. Sur gitpod les ports n'étant pas ouverts il y a aura une translation d'adresse. Afficher l'Url gitpod
-
-![](img/spring_api_local.png?raw=true)
-
-- Afficher l'url translatée par `Gitpod` _(`gp` est la ligne de commande de gitpod)_
-
-```bash
-gp url 8080
-```
-
-- Afficher la liste des `todos`
+#### `✅.2.4.b`- Access Application Apis
 
 ```
 gp preview "$(gp url 8080)/api/v1/todos/"
 ```
 
-![](img/spring_api_gitpod.png?raw=true)
+#### `✅.2.4.c`- Integration Tests
 
-#### `✅.138`- Tests d'intégration de l'application
+- Set the custom path as environment variable
 
-- Stopper l'application avec un `CTRL+C`
+```
+export SPRING_DATA_URL=`gp url 8080`
 
-- Editer la classe `E04_SpringControllerTest` pour remplacer `createURLWithPort` avec l'url de votre gitpod :
-
-_de:_
-
-```java
-private String createURLWithPort(String uri) {
-  return "http://localhost:" + port + uri;
-}
 ```
 
-_à (ici 8080-datastaxdevs-conference2-g3jf9fgchk4.ws-eu34.gitpod.io est le résultat de ma commande gp url 8080):_
+
+- Edit class `E04_SpringControllerTest` pour remplacer `createURLWithPort` with URL:
+
+```
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/src/test/java/com/datastax/workshop/E04_SpringControllerTest.java
+```
 
 ```java
 private String createURLWithPort(String uri) {
@@ -520,7 +498,8 @@ private String createURLWithPort(String uri) {
 - Exécuter le test unitaire suivant:
 
 ```bash
-cd /workspace/conference-2022-devoxx/labs/lab5_spring_data
+
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data
 mvn test -Dtest=com.datastax.workshop.E04_SpringControllerTest
 ```
 
@@ -545,27 +524,39 @@ mvn test -Dtest=com.datastax.workshop.E04_SpringControllerTest
 
 <p/><br/>
 
-> [🏠 Retour à la table des matières](#-table-des-matières)
+# LAB 3 - Cassandra Quarkus Extension
 
-# LAB 6 - Cassandra Quarkus Extension
+## 3.1 - Configuration
 
-## 6.1 - Introduction aux extensions Quarkus
+## 2.1 - Configuration
 
-#### 📘 Ce qu'il faut retenir:
+#### `✅.3.1.a`- Create keyspace `ks_quarkus`
 
-[Quarkus](https://quarkus.io/) est un framework pour construire des microservices sur la plateforme Java. Le parti pris est de réaliser le plus d'opérations possibles durant le build et de ne packager que ce qui est absolument nécessaire. Les objectifs sont:
+```bash
+astra db create-keyspace workshops -k ks_spring
+```
 
-- La production d'une image native de quelques mega-octets seulement
-- La production d'une image qui démarre en quelques millièmes de seconde.
+#### `✅.2.1.b`- list Keyspaces
 
-Une [extension Quarkus](https://quarkus.io/guides/writing-extensions) permet de simplifier la configuration d'une application et d'assurer une meilleure compatibilité. L'équipe `Datastax` a créé et open sourcé une extension pour Cassandra [ici](https://github.com/datastax/cassandra-quarkus). Voici ce qu'elle permet:
+```bash
+astra db list-keyspaces workshops
+```
 
-- Le support de réactif avec `Mutiny` (couche réactive de Quarkus)
-- L'intégration avec `vertx` et le event loop de Quarkus
-- Déclarer les `Mapper` (object mapping) dans `Arc`, le système d'injection de dépendances de Quarkus.
-- Fournir des hints pour la création d'une native image _aux petits oignons._
+> 🖥️ `output`
+>
+> ```
+> +---------------------+
+> | Name                |
+> +---------------------+
+> | ks_spring           |
+> | ks_java (default)   |
+> +---------------------+
 
-La librairie à utiliser est `cassandra-quarkus-client` et la version est [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.datastax.oss.quarkus/cassandra-quarkus-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.datastax.oss.quarkus/cassandra-quarkus-client)
+#### `✅.2.1.c`- Check Project configuration
+
+```bash
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/pom.xml
+```
 
 ```xml
 <dependency>
