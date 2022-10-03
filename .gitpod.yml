@@ -1,0 +1,104 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: database
+    before: |
+      printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
+      printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
+      curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
+    init: | 
+      cd /workspace/workshop-spring-quarkus-micronaut-cassandra/
+    command: |
+      unset JAVA_TOOL_OPTIONS
+      source /home/gitpod/.astra/cli/astra-init.sh
+      export PYTHONPATH="/workspace/workshop-realtime-data-pipelines/:$PYTHONPATH"
+      astra setup
+  - name: lab1_cassandra_driver
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers/init
+    command: |
+      ./lab1_cassandra_drivers/init
+  - name: lab2_spring_data
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data/init
+    command: |
+      ./lab2_spring_data/init
+  - name: lab3_quarkus
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/init
+    command: |
+      ./lab3_quarkus/init
+  - name: lab4_micronaut
+    before: |
+      chmod 700 /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/init
+    command: |
+      ./labs/lab7_micronaut/init
+  - name: gp
+    command: |
+      clear
+      gp url 8080
+
+  # -------------------------------------------------
+  # Install Cqlsh for Astra and setup for a DB
+  # -------------------------------------------------
+  - name: cassandra-astra
+    env:
+        CQLENG_ALLOW_SCHEMA_MANAGEMENT: 1
+    before: |
+      chmod 700 /workspace/conference-2022-devoxx/labs/lab1_initialisation_environnements/astra-cqlsh
+      chmod 700 /workspace/conference-2022-devoxx/labs/lab1_initialisation_environnements/astra-cqlsh-install
+      chmod 700 /workspace/conference-2022-devoxx/labs/lab1_initialisation_environnements/cassandra-start
+      chmod 700 /workspace/conference-2022-devoxx/labs/lab1_initialisation_environnements/cassandra-cqlsh
+    command: |
+      ./labs/lab1_initialisation_environnements/astra-cqlsh-install
+  - name: cassandra-docker
+    before: |
+      docker pull cassandra:4.0.3
+    command: |
+      ./labs/lab1_initialisation_environnements/cassandra-start 2>/dev/null
+  
+ports:
+  # Cassandra Node in Docker
+  - port: 9042
+    onOpen: ignore
+    visibility: public
+  # Spring Application
+  - port: 8080
+    onOpen: open-browser
+    visibility: public
+  # Quarkus Application
+  - port: 8081
+    onOpen: open-browser
+    visibility: public 
+  # Micronaut Application
+  - port: 5005
+    onOpen: ignore
+    visibility: public      
+  # Micronaut Application
+  - port: 8082
+    onOpen: open-browser
+    visibility: public   
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: false
+
+vscode:
+  extensions:
+    # Lombok
+    - GabrielBB.vscode-lombok
+    # Java
+    - vscjava.vscode-java-pack
+    # Spring Boot
+    - Pivotal.vscode-boot-dev-pack
+    # Docker Containers
+    - ms-azuretools.vscode-docker
+  
