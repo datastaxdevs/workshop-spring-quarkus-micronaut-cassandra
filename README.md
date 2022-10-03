@@ -144,24 +144,7 @@ Go back to your gitpod terminal waiting for your token. Make sure you select the
 > Happy Coding !
 > ```
 
-
-#### `✅.setup-05`- List your existing Users.
-
-```bash
-astra user list
-```
-
-> 🖥️ `setup-05 output`
->
-> ```
-> +--------------------------------------+-----------------------------+---------------------+
-> | User Id                              | User Email                  | Status              |
-> +--------------------------------------+-----------------------------+---------------------+
-> | b665658a-ae6a-4f30-a740-2342a7fb469c | cedrick.lunven@datastax.com | active              |
-> +--------------------------------------+-----------------------------+---------------------+
-> ```
-
-#### `✅.setup-06`- Create database `workshops` and keyspace `ks_java` if they do not exist:
+#### `✅.setup-05`- Create database `workshops` and keyspace `ks_java` if they do not exist:
 
 ```bash
 astra db create workshops -k ks_java --if-not-exist --wait
@@ -178,81 +161,31 @@ Let's analyze the command:
 
 > **Note**: If the database already exist but has not been used for while the status will be `HIBERNATED`. The previous command will resume the db an create the new keyspace but it can take about a minute to execute.
 
-> 🖥️ `setup-06 output`
->
-> ```
-> [ INFO ] - Database 'workshops' already exist. Connecting to database.
-> [ INFO ] - Database 'workshops' has status 'MAINTENANCE' waiting to be 'ACTIVE' ...
->[ INFO ] - Database 'workshops' has status 'ACTIVE' (took 7983 millis)
-> ```
-
-#### `✅.setup-07`- Check the status of database `workshops`
-
-```bash
-astra db status workshops
-```
-
-> 🖥️ `setup-07 output`
->
-> ```
-> [ INFO ] - Database 'workshops' has status 'ACTIVE'
-> ```
-
-
-*Congratulations your environment is all set, let's start the labs !*
-
-# LAB 1 - Understanding Java Drivers
-
-## 1.1 - Configuration
-
-#### `✅.1.1.a`- Get the informations for your database including the keyspace list
-
-```bash
-astra db get workshops
-```
-
-> 🖥️ `output`
->
-> ```
-> +------------------------+-----------------------------------------+
-> | Attribute              | Value                                   |
-> +------------------------+-----------------------------------------+
-> | Name                   | workshops                               |
-> | id                     | bb61cfd6-2702-4b19-97b6-3b89a04c9be7    |
-> | Status                 | ACTIVE                                  |
-> | Default Cloud Provider | AWS                                     |
-> | Default Region         | us-east-1                               |
-> | Default Keyspace       | ks_java                                 |
-> | Creation Time          | 2022-08-29T06:13:06Z                    |
-> |                        |                                         |
-> | Keyspaces              | [0] ks_java                             |
-> |                        |                                         |
-> |                        |                                         |
-> | Regions                | [0] us-east-1                           |
-> |                        |                                         |
-> +------------------------+-----------------------------------------+
-> ```
-
-#### `✅.1.1.b`- Download Secure bundle
-
-```
-astra db download-scb workshops -f /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
-```
-
-```
-ls -l /workspace/workshop-spring-quarkus-micronaut-cassandra/
-```
-
-#### `✅.1.1.c`- Register token as env variable
+#### `✅.setup-06`- Register token as env variable
 
 ```
 export ASTRA_DB_APP_TOKEN=`astra config get default --key ASTRA_DB_APPLICATION_TOKEN`
 echo ${ASTRA_DB_APP_TOKEN}
 ```
 
-## 1.2 - Learn about drivers
+#### `✅.setup-07`- Download Secure bundle
 
-#### `✅.1.2.a`- Connectivity
+- Download credentials in home folder
+
+```
+astra db download-scb workshops -f /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
+```
+
+- Check that the file is about `12k`
+```
+ls -l /workspace/workshop-spring-quarkus-micronaut-cassandra/
+```
+
+*Congratulations your environment is all set, let's start the labs !*
+
+# LAB 1 - Understanding Java Drivers
+
+#### `✅.1.a`- Connectivity
 
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -260,7 +193,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E00_TestConnectivity
 ```
 
-#### `✅.1.2.b`- Create Schema
+#### `✅.1.b`- Create Schema
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -268,7 +201,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E01_CreateSchema
 ```
 
-#### `✅.1.2.c`- About Statements
+#### `✅.1.c`- About Statements
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -276,7 +209,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E02_Statements
 ```
 
-#### `✅.1.2.d`- CRUD
+#### `✅.1.d`- CRUD
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -284,7 +217,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E03_OperationsCrud
 ```
 
-#### `✅.1.2.e`- Batches
+#### `✅.1.e`- Batches
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -292,7 +225,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E04_Batches
 ```
 
-#### `✅.1.2.f`- Paging
+#### `✅.1.f`- Paging
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -300,7 +233,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E05_Paging
 ```
 
-#### `✅.1.2.g`- Collections: List,Set,Map,Udt
+#### `✅.1.g`- Collections: List,Set,Map,Udt
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -308,7 +241,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E06_ListSetMapAndUdt
 ```
 
-#### `✅.1.2.h`- Working with Json
+#### `✅.1.h`- Working with Json
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -316,7 +249,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E07_Json
 ```
 
-#### `✅.1.2.i`- Asynchronous Programming
+#### `✅.1.i`- Asynchronous Programming
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -324,7 +257,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E08_Async
 ```
 
-#### `✅.1.2.j`- Reactive Programming
+#### `✅.1.j`- Reactive Programming
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -332,7 +265,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E09_Reactive
 ```
 
-#### `✅.1.2.k`- Counters
+#### `✅.1.k`- Counters
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -340,7 +273,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E10_Counters
 ```
 
-#### `✅.1.2.l`- LightWeight Transactions
+#### `✅.1.l`- LightWeight Transactions
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
@@ -348,7 +281,7 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_dr
 mvn clean compile exec:java -Dexec.mainClass=com.datastax.samples.E11_LightweightTransactions
 ```
 
-#### `✅.1.2.m`- Object Mapping
+#### `✅.1.m`- Object Mapping
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab1_cassandra_drivers
