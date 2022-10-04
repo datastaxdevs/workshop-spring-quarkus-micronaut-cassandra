@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -18,9 +19,8 @@
 
 	<properties>
 		<java.version>11</java.version>
-		 <repackage.classifier/>
+		<repackage.classifier/>
 		<spring-native.version>0.12.1</spring-native.version>
-		<native-buildtools.version>0.9.14</native-buildtools.version>
 	</properties>
 
 	<dependencies>
@@ -78,6 +78,11 @@
 			<artifactId>spring-native</artifactId>
 			<version>${spring-native.version}</version>
 		</dependency>
+		<dependency>
+    <groupId>org.lz4</groupId>
+    <artifactId>lz4-java</artifactId>
+    <version>1.8.0</version>
+</dependency>
 	</dependencies>
 
 	<build>
@@ -116,8 +121,28 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
+		</plugins>
+		
+	</build>
+	
+	<profiles>
+      <profile>
+          <id>native</id>
+          <properties>
+              <repackage.classifier>exec</repackage.classifier>
+			  <native-buildtools.version>0.9.14</native-buildtools.version>
+          </properties>
+		  <dependencies>
+                <dependency>
+                    <groupId>org.graalvm.buildtools</groupId>
+                    <artifactId>junit-platform-native</artifactId>
+                    <version>${native-buildtools.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+		  <build>
+		    <plugins>
+		      <plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
 				<version>${native-buildtools.version}</version>
@@ -132,22 +157,13 @@
 				</executions>
 				<configuration>
 					<imageName>todo-spring</imageName>
-					<skip>true</skip>
 					<buildArgs>
 						<buildArg>-H:+ReportExceptionStackTraces</buildArg>
 					</buildArgs>
 				</configuration>
 			</plugin>
-		</plugins>
-		
-	</build>
-	
-	<profiles>
-      <profile>
-          <id>native</id>
-          <properties>
-              <repackage.classifier>exec</repackage.classifier>
-          </properties>
+			</plugins>
+		  </build>
       </profile>
     </profiles>
 
