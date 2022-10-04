@@ -682,6 +682,32 @@ cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E01_MicronautInitTest
 ```
 
+> 🖥️ `OUTPUT`
+> ```
+> [INFO] -------------------------------------------------------
+> [INFO]  T E S T S
+> [INFO] -------------------------------------------------------
+> [INFO] Running com.datastaxdev.E01_MicronautInitTest
+> 12:57:12.946 [main] INFO  c.datastaxdev.TodoApplicationStartup - Startup Initialization
+> 12:57:13.067 [main] INFO  c.datastaxdev.TodoApplicationStartup - + Table TodoItems created if needed.
+> 12:57:13.067 [main] INFO  c.datastaxdev.TodoApplicationStartup - [OK]
+> com.datastax.oss.driver.internal.core.session.DefaultSession@37854b34
+> 12:57:13.108 [main] INFO  c.datastaxdev.E01_MicronautInitTest - Creating your CqlSession to Cassandra...
+> 12:57:13.111 [main] INFO  c.datastaxdev.E01_MicronautInitTest - + [OK] Your are connected to keyspace ks_micronaut
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.677 s - in com.datastaxdev.E01_MicronautInitTest
+> [INFO] 
+> [INFO] Results:
+> [INFO] 
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+> [INFO] 
+> [INFO] ------------------------------------------------------------------------
+> [INFO] BUILD SUCCESS
+> [INFO] ------------------------------------------------------------------------
+> [INFO] Total time:  11.262 s
+> [INFO] Finished at: 2022-10-04T12:57:15Z
+> [INFO] ------------------------------------------------------------------------
+
+
 #### `✅.4.1.e`- Use CqlSession
 
 ```
@@ -689,12 +715,99 @@ cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E02_MicronautCqlTest
 ```
 
+> 🖥️ `OUTPUT`
+> ```
+> [INFO] -------------------------------------------------------
+> [INFO]  T E S T S
+> [INFO] -------------------------------------------------------
+> [INFO] Running com.datastaxdev.E02_MicronautCqlTest
+> 13:00:21.370 [main] INFO  c.datastaxdev.TodoApplicationStartup - Startup Initialization
+> 13:00:21.482 [main] INFO  c.datastaxdev.TodoApplicationStartup - + Table TodoItems created if needed.
+> 13:00:21.482 [main] INFO  c.datastaxdev.TodoApplicationStartup - [OK]
+> 13:00:22.372 [main] INFO  com.datastaxdev.E02_MicronautCqlTest - Creating the schema...
+> 13:00:22.456 [main] INFO  com.datastaxdev.E02_MicronautCqlTest - + [OK]
+> 13:00:22.457 [main] INFO  com.datastaxdev.E02_MicronautCqlTest - Inserting Data
+> 13:00:22.552 [main] INFO  com.datastaxdev.E02_MicronautCqlTest - + [OK]
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.28 s - in com.datastaxdev.E02_MicronautCqlTest
+> [INFO] 
+> [INFO] Results:
+> [INFO] 
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+> [INFO] 
+> [INFO] ------------------------------------------------------------------------
+> [INFO] BUILD SUCCESS
+> [INFO] ------------------------------------------------------------------------
+> [INFO] Total time:  11.441 s
+> [INFO] Finished at: 2022-10-04T13:00:24Z
+> [INFO] ------------------------------------------------------------------------
+> ```
+
 ## 4.2 - Configuration
+
+#### `✅.4.2.a`- Object Mapping
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E03_MicronautObjectMappingTest
 ```
+
+> 🖥️ `OUTPUT`
+> ```
+> [INFO] -------------------------------------------------------
+> [INFO]  T E S T S
+> [INFO] -------------------------------------------------------
+> [INFO] Running com.datastaxdev.E03_MicronautObjectMappingTest
+> 13:02:03.705 [main] INFO  c.datastaxdev.TodoApplicationStartup - Startup Initialization
+> 13:02:03.810 [main] INFO  c.datastaxdev.TodoApplicationStartup - + Table TodoItems created if needed.
+> 13:02:03.810 [main] INFO  c.datastaxdev.TodoApplicationStartup - [OK]
+> 13:02:04.038 [main] INFO  c.d.E03_MicronautObjectMappingTest - Inserting Data
+> 13:02:04.135 [main] INFO  c.d.E03_MicronautObjectMappingTest - + [OK]
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.494 s - in com.datastaxdev.E03_MicronautObjectMappingTest
+> [INFO] 
+> [INFO] Results:
+> [INFO] 
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+> [INFO] 
+> [INFO] ------------------------------------------------------------------------
+> [INFO] BUILD SUCCESS
+> [INFO] ------------------------------------------------------------------------
+> [INFO] Total time:  10.433 s
+> [INFO] Finished at: 2022-10-04T13:02:06Z
+> [INFO] ------------------------------------------------------------------------
+> ```
+
+#### `✅.4.2.b`- Integration Tests
+
+- Run integration tests with the following.
+
+```bash
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
+mvn test -Dtest=com.datastaxdev.E04_MicronautControllerTest
+```
+
+> 🖥️ `OUTPUT`
+> ```
+> [INFO] -------------------------------------------------------
+> [INFO]  T E S T S
+> [INFO] -------------------------------------------------------
+> [INFO] Running com.datastaxdev.E04_MicronautControllerTest
+> 13:10:03.322 [main] INFO  c.datastaxdev.TodoApplicationStartup - Startup Initialization
+> 13:10:03.431 [main] INFO  c.datastaxdev.TodoApplicationStartup - + Table TodoItems created if needed.
+> 13:10:03.431 [main] INFO  c.datastaxdev.TodoApplicationStartup - [OK]
+> 13:10:04.828 [main] INFO  c.d.E04_MicronautControllerTest - 12 task retrieved
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.811 s - in com.datastaxdev.E04_MicronautControllerTest
+> [INFO] 
+> [INFO] Results:
+> [INFO] 
+> [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+> [INFO] 
+> [INFO] ------------------------------------------------------------------------
+> [INFO] BUILD SUCCESS
+> [INFO] ------------------------------------------------------------------------
+> [INFO] Total time:  12.778 s
+> [INFO] Finished at: 2022-10-04T13:10:07Z
+> [INFO] ------------------------------------------------------------------------
+> ```
 
 ## 4.3 - Micronaut Application
 
@@ -702,8 +815,24 @@ mvn test -Dtest=com.datastaxdev.E03_MicronautObjectMappingTest
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn clean compile exec:java
+mvn mn:run
 ```
+
+
+> 🖥️ `OUTPUT`
+> ```
+>  __  __ _                                  _   
+> |  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_ 
+> | |\/| | |/ __| '__/ _ \| '_ \ / _` | | | | __|
+> | |  | | | (__| | | (_) | | | | (_| | |_| | |_ 
+> |_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
+>   Micronaut (v3.7.1)
+> 
+> 13:06:15.990 [main] INFO  c.datastaxdev.TodoApplicationStartup - Startup Initialization
+> 13:06:16.096 [main] INFO  c.datastaxdev.TodoApplicationStartup - + Table TodoItems created if needed.
+> 13:06:16.096 [main] INFO  c.datastaxdev.TodoApplicationStartup - [OK]
+> 
+> ```
 
 #### `✅.4.3.b`- Show the Apis
 
@@ -713,14 +842,8 @@ mvn clean compile exec:java
 gp preview "$(gp url 8082)/api/v1/clun/todos/"
 ```
 
-#### `✅.4.3.c`- Integration Tests
+![out](img/micronaut-output.png)
 
-- Run integration tests with the following.
-
-```bash
-cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn test -Dtest=com.datastaxdev.E04_MicronautControllerTest
-```
 
 ## 4.4 - Native Image
 
@@ -729,6 +852,10 @@ mvn test -Dtest=com.datastaxdev.E04_MicronautControllerTest
 > **[Documentation](https://docs.micronaut.io/latest/guide/index.html#graal)**
 
 - Change environment variable
+
+```
+gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/src/main/resources/application.yml
+```
 
 ```yaml
 #password: ${ASTRA_DB_APP_TOKEN}
@@ -740,12 +867,19 @@ mvn test -Dtest=com.datastaxdev.E04_MicronautControllerTest
 mvn package -Dpackaging=native-image -Pgraalvm
 ```
 
-#### `✅.4.4.b`- Build native image
-
-We would still need a way for the cloud secure bundle like a volume
+- Then 
 
 ```
-mvn package -Dpackaging=docker-native -Pgraalvm
+native-image --no-server -cp lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication
+```
+
+```
+mv ./target/com.datastaxdev.todoapplication ./target/todo-micronaut
+```
+
+- Run the Native
+```
+./target/todo-micronaut
 ```
 
 ## The END.

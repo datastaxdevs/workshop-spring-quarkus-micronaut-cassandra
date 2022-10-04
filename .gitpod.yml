@@ -9,7 +9,7 @@ tasks:
       printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
       curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
     init: |
-      sdk install java 22.2.r11-grl
+      sdk install java 22.1.0.r11-grl
       gu install native-image
       cd /workspace/workshop-spring-quarkus-micronaut-cassandra/
     command: |
