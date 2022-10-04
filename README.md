@@ -577,7 +577,7 @@ mvn test -Dtest=com.datastax.workshop.E02_QuarkusCql
 
 #### `✅.3.3.a`- Object Mapping configuration
 
-- Micronaut reuses the Driver Mapper mechanism
+- Quarkus reuses the Driver Mapper mechanism
 
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
@@ -634,7 +634,15 @@ gp preview "$(gp url 8081)/q/swagger-ui"
 
 ![](img/quarkus-swagger.png?raw=true)
 
-#### `✅.3.4.c`- Integration Test
+#### `✅.3.4.c`- Access APIs
+
+```bash
+gp preview "$(gp url 8081)/api/v1/clun/todos/"
+```
+
+![](img/quarkus-swagger.png?raw=true)
+
+#### `✅.3.4.d`- Integration Test
 
 Stop running application with `q`.
 
@@ -642,7 +650,7 @@ Stop running application with `q`.
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 mvn test -Dtest=com.datastax.workshop.E04_QuarkusController
 ```
-#### `✅.3.4.d`- Native Image
+#### `✅.3.4.e`- Native Image
 
 You can package the image with the `-Pnative` option as below.
 
