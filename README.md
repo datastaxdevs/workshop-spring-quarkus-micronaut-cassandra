@@ -960,7 +960,7 @@ mvn test -Dtest=com.datastaxdev.E04_MicronautControllerTest
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn mn:run
+mvn mn:run -DskipTests
 ```
 
 
@@ -1009,23 +1009,20 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/sr
 - Compile as native image
 
 ```
-mvn package -Dpackaging=native-image -Pgraalvm
+mvn package -Dpackaging=native-image -Pgraalvm -DskipTests
 ```
 
 - Then 
 
 ```
-native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication
+native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication target/todo-micronaut
 ```
 
-```
-mv com.datastaxdev.todoapplication todo-micronaut
-```
 
 - Run the Native
 
 ```
-./todo-micronaut
+./target/todo-micronaut
 ```
 
 - Show the API
