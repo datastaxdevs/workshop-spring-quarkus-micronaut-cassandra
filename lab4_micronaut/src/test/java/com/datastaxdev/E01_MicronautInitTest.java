@@ -9,14 +9,18 @@ import com.datastax.oss.driver.api.core.CqlSession;
 
 import io.micronaut.context.BeanContext;
 import io.micronaut.context.annotation.Property;
+import io.micronaut.runtime.EmbeddedApplication;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
-@MicronautTest
-public class E01_MicronautInit {
+@MicronautTest(application=TodoApplication.class)
+public class E01_MicronautInitTest {
 
+    @Inject
+    EmbeddedApplication<?> application;
+    
     /** Logger for the class. */
-    static Logger LOGGER = LoggerFactory.getLogger(E01_MicronautInit.class);
+    static Logger LOGGER = LoggerFactory.getLogger(E01_MicronautInitTest.class);
     
     @Inject
     BeanContext beanContext;
@@ -29,11 +33,12 @@ public class E01_MicronautInit {
     String keyspace;
     
     @Test
-    public void testCqlSession() {
+    public void testConnectCassandra() {
         //final  CqlSession cqlSession = (CqlSession) beanContext.getBean(CqlSession.class);
-        
+        System.out.println(cqlSession);
         LOGGER.info("Creating your CqlSession to Cassandra...");
-        Assertions.assertNotNull(keyspace);
+        Assertions.assertNotNull(beanContext);
+        Assertions.assertNotNull(cqlSession);
         Assertions.assertTrue(cqlSession.getKeyspace().isPresent());
         LOGGER.info("+ [OK] Your are connected to keyspace {}", cqlSession.getKeyspace().get());
         Assertions.assertEquals(keyspace, cqlSession.getKeyspace().get().toString());

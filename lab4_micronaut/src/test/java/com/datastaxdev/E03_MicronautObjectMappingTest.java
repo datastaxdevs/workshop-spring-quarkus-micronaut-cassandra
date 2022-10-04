@@ -5,35 +5,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastaxdev.todo.cassandra.TodoServiceCassandraCql;
+import com.datastaxdev.todo.cassandra.TodoServicesCassandraOM;
 
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest
-public class E02_MicronautCql {
-    
+public class E03_MicronautObjectMappingTest {
+
     /** Logger for the class. */
-    static Logger LOGGER = LoggerFactory.getLogger(E02_MicronautCql.class);
+    static Logger LOGGER = LoggerFactory.getLogger(E03_MicronautObjectMappingTest.class);
     
     @Inject
-    CqlSession cqlSession;
+    CqlSession quarkusCqlSession;
     
     @Inject
-    TodoServiceCassandraCql todoService;
+    TodoServicesCassandraOM todoService;
     
     @Test
     public void testExecuteCql() {
-        LOGGER.info("Creating the schema...");
-        TodoServiceCassandraCql.createTableTodo(cqlSession);
-        LOGGER.info("+ [OK]");
-        
         LOGGER.info("Inserting Data");
         TodoDto dto = new TodoDto();
         dto.setUserId("clun");
         dto.setCompleted(false);
-        dto.setTitle("Apprendre Micronaut");
+        dto.setTitle("Apprendre Mapping Objet Micronaut");
         todoService.save(dto);
         LOGGER.info("+ [OK]");
     }
+    
 }

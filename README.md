@@ -16,18 +16,14 @@ Welcome to the *Explore SpringBoot, Quarkus and Micronaut microservices with NoS
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
 
 ## 📋 Table of contents
-
-- **HouseKeeping**
-  - [Objectives](#objectives)
-  - [Frequently asked questions](#frequently-asked-questions)
-  - [Materials for the Session](#materials-for-the-session)
-
+- [Objectives](#objectives)
+- [Frequently asked questions](#frequently-asked-questions)
+- [Materials for the Session](#materials-for-the-session)
 - [Setup your environment (DB, IDE)](#setup)
 - [LAB1 - Understanding java drivers](#lab-1---understanding-java-drivers)
 - [LAB2 - Spring Boot and Spring Data Cassandra](#lab-2---spring-data-cassandra)
-- [LAB3 - Quarkus](#lab3---working-with-databases)
-- [LAB4 - Micronaut](#lab4---pulsar-io)
-- [Homework](#Homework)
+- [LAB3 - Quarkus](#lab-3---cassandra-quarkus-extension)
+- [LAB4 - Micronaut](#lab-4---micronaut-cassandra)
 <p>
 
 ## Objectives
@@ -681,8 +677,6 @@ mvn clean compile
 
 #### `✅.4.1.d`- Testing project
 
-> 🚨 The maven test consider the bean NULL. The command below is failing in gitpod.
-
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E01_MicronautInit
@@ -690,17 +684,12 @@ mvn test -Dtest=com.datastaxdev.E01_MicronautInit
 
 #### `✅.4.1.e`- Use CqlSession
 
-> 🚨 The maven test consider the bean NULL. The command below is failin
-
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E02_MicronautCql
 ```
 
 ## 4.2 - Configuration
-
-
-> 🚨 The maven test consider the bean NULL. The command below is failin
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
@@ -726,12 +715,37 @@ gp preview "$(gp url 8082)/api/v1/clun/todos/"
 
 #### `✅.4.3.c`- Integration Tests
 
-Arrêter l'application en utilisant la touche `CTRL+C`. Nous pouvons terminer par un test d'intégration
+- Run integration tests with the following.
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
 mvn test -Dtest=com.datastaxdev.E04_MicronautController
 ```
 
+## 4.4 - Native Image
+
+#### `✅.4.4.a`- Build native image
+
+> **[Documentation](https://docs.micronaut.io/latest/guide/index.html#graal)**
+
+- Change environment variable
+
+```yaml
+#password: ${ASTRA_DB_APP_TOKEN}
+```
+
+- Compile as native image
+
+```
+mvn package -Dpackaging=native-image -Pgraalvm
+```
+
+#### `✅.4.4.b`- Build native image
+
+We would still need a way for the cloud secure bundle like a volume
+
+```
+mvn package -Dpackaging=docker-native -Pgraalvm
+```
 
 ## The END.

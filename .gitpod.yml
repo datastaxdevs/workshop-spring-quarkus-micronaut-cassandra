@@ -4,10 +4,13 @@ image:
 tasks:
   - name: WORKSHOP
     before: |
+      sdk install micronaut
       printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
       printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
       curl -Ls "https://dtsx.io/get-astra-cli" | bash >> ./install.log
-    init: | 
+    init: |
+      sdk install java 22.2.r11-grl
+      gu install native-image
       cd /workspace/workshop-spring-quarkus-micronaut-cassandra/
     command: |
       unset JAVA_TOOL_OPTIONS

@@ -19,10 +19,10 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest
-public class E04_MicronautController {
+public class E04_MicronautControllerTest {
     
     /** Logger for the class. */
-    static Logger LOGGER = LoggerFactory.getLogger(E04_MicronautController.class);
+    static Logger LOGGER = LoggerFactory.getLogger(E04_MicronautControllerTest.class);
     
     @Inject
     EmbeddedApplication<?> application;
