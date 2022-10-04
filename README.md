@@ -481,6 +481,10 @@ cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab2_spring_data
 mvn test -Dtest=com.datastax.workshop.E04_SpringControllerTest
 ```
 
+## 2.5 Spring native
+
+> **Documentation:** [Official Documentation](https://www.graalvm.org/dev/reference-manual/native-image/guides/build-spring-boot-app-into-native-executable/)
+
 <p/><br/>
 
 # LAB 3 - Cassandra Quarkus Extension

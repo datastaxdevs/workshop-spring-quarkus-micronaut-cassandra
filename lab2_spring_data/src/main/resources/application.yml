@@ -7,6 +7,5 @@ spring:
       password: ${ASTRA_DB_APP_TOKEN}
 datastax:
   astra:
-    secure-connect-bundle: /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
-      
+    secure-connect-bundle: /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip  
       

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.cassandra.core.CassandraOperations;
 
+import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.workshop.todo.TodoEntity;
 import com.datastax.workshop.todo.TodoRepositorySimpleCassandra;
 
@@ -20,7 +21,7 @@ public class E03_SpringDataCassandraOperations {
     CassandraOperations cassandraOps;
     
     @Autowired
-    TodoRepositorySimpleCassandra todoRepoSimple;
+    CqlSession cqlSession;
     
     @Test
     public void testCassandraOperations() {
@@ -33,6 +34,8 @@ public class E03_SpringDataCassandraOperations {
     
     @Test
     public void testSimpleCassandraRepository() {
+        TodoRepositorySimpleCassandra todoRepoSimple = 
+                new TodoRepositorySimpleCassandra(cqlSession, cassandraOps);
         TodoEntity e = todoRepoSimple.save(new TodoEntity("Apprendre Cassandra", 0));
         LOGGER.info("Tache enregistree avec id {}", e.getUid());
         

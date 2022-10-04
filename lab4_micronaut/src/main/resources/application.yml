@@ -12,6 +12,7 @@ cassandra:
         timeout: 5 seconds
       session-keyspace: ks_micronaut
       cloud:
+        #secure-connect-bundle: /Users/cedricklunven/Downloads/secure-connect-workshops.zip
         secure-connect-bundle: /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
     advanced:
       auth-provider:
