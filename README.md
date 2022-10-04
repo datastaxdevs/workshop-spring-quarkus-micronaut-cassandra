@@ -870,16 +870,23 @@ mvn package -Dpackaging=native-image -Pgraalvm
 - Then 
 
 ```
-native-image --no-server -cp lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication
+native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication
 ```
 
 ```
-mv ./target/com.datastaxdev.todoapplication ./target/todo-micronaut
+mv com.datastaxdev.todoapplication todo-micronaut
 ```
 
 - Run the Native
+
 ```
-./target/todo-micronaut
+./todo-micronaut
+```
+
+- Show the API
+
+```
+gp preview "$(gp url 8082)/api/v1/clun/todos/"
 ```
 
 ## The END.
