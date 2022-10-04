@@ -131,11 +131,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<imageName>${binary-name}</imageName>
-					<skip>${skip-native-build}</skip>
+					<imageName>todo-spring</imageName>
+					<skip>true</skip>
 					<buildArgs>
-						<buildArg>-H:+ReportExceptionStackTraces
-							${native-image-extra-flags}</buildArg>
+						<buildArg>-H:+ReportExceptionStackTraces</buildArg>
 					</buildArgs>
 				</configuration>
 			</plugin>
@@ -180,7 +179,5 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
-
 
 </project>
