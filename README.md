@@ -1,6 +1,6 @@
 ## 🎓 Spring, Quarkus and Micronaut with Apache Cassandra
 
-<img src="images/badge.png?raw=true" width="150" align="right" />
+<img src="img/badge.png?raw=true" width="150" align="right" />
 
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
@@ -11,7 +11,7 @@ Welcome to the *Explore SpringBoot, Quarkus and Micronaut microservices with NoS
 
 🎓 **Level** Beginner to Intermediate
 
-![](images/splash.png)
+![](img/splash.png)
 
 > [🔖 Accessing HANDS-ON](#-start-hands-on)
 
@@ -28,13 +28,13 @@ Welcome to the *Explore SpringBoot, Quarkus and Micronaut microservices with NoS
 
 ## Objectives
 
-- 🎯 Give you an understanding and how and where to position Apache Pulsar
+- 🎯 Creating a ToDo app on multiple Java platforms (Spring Boot, Quarkus, Micronaut)
 
-- 🎯 Give an overview of  streaming and datascience ecosystem**
+- 🎯 Data drivers for the app to connect to Astra
 
-- 🎯 Give you an understanding of Apache Cassandra NoSQL Database
+- 🎯 Java Native and the respective platforms
 
-- 🎯 Create your first pipeline with streaming and database.
+- 🎯 [Stretch] Building a native app on each of the platforms
 
 - 🚀 Have fun with an interactive session
 
@@ -47,12 +47,11 @@ Welcome to the *Explore SpringBoot, Quarkus and Micronaut microservices with NoS
 <p>There is nothing preventing you from running the workshop on your own machine. If you do so, you will need the following:
 <ol>
 <li><b>git</b>
-<li><b>Python 3.6+</b>
 <li><b>Astra Cli</b>
-<li><b>Pulsar Shell or Pulsar-Client</b>
+<li>Java, Graal VM</b>
 </ol>
 </p>
-In this readme, we try to provide instructions for local development as well - but keep in mind that the main focus is development on Gitpod, hence <strong>we can't guarantee live support</strong> about local development in order to keep on track with the schedule. However, we will do our best to give you the info you need to succeed.
+In this README, we provide instructions mainly for Gitpod, hence <strong>we can't guarantee live support</strong> about local development in order to keep on track with the schedule. However, we will do our best to give you the info. you need to succeed.
 </details>
 <p/>
 <details>
@@ -61,7 +60,7 @@ In this readme, we try to provide instructions for local development as well - b
 <ul>
 <li>You will need enough *real estate* on screen, we will ask you to open a few windows and it would not fit on mobiles (tablets should be OK)
 <li>You will need an Astra account: don't worry, we'll work through that in the following
-<li>As "Intermediate level" we expect you to know what java and Spring are. 
+<li>As "Intermediate level" we expect you to know what Java and Spring are. 
 </ul>
 </p>
 </details>
