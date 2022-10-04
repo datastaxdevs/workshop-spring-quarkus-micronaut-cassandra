@@ -643,6 +643,19 @@ Stop running application with `q`.
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 mvn test -Dtest=com.datastax.workshop.E04_QuarkusController
 ```
+#### `✅.3.4.d`- Native Image
+
+You can package the image with the `-Pnative` option as below.
+
+```bash
+cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
+mvn clean package -DskipTests -Pnative
+```
+and you can run it as below
+
+```
+./target/lab3-quarkus-0.0.1-SNAPSHOT-runner
+```
 
 # LAB 4 - Micronaut Cassandra
 
@@ -894,3 +907,4 @@ gp preview "$(gp url 8082)/api/v1/clun/todos/"
 ```
 
 ## The END.
+
