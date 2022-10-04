@@ -679,21 +679,21 @@ mvn clean compile
 
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn test -Dtest=com.datastaxdev.E01_MicronautInit
+mvn test -Dtest=com.datastaxdev.E01_MicronautInitTest
 ```
 
 #### `✅.4.1.e`- Use CqlSession
 
 ```
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn test -Dtest=com.datastaxdev.E02_MicronautCql
+mvn test -Dtest=com.datastaxdev.E02_MicronautCqlTest
 ```
 
 ## 4.2 - Configuration
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn test -Dtest=com.datastaxdev.E03_MicronautObjectMapping
+mvn test -Dtest=com.datastaxdev.E03_MicronautObjectMappingTest
 ```
 
 ## 4.3 - Micronaut Application
@@ -719,7 +719,7 @@ gp preview "$(gp url 8082)/api/v1/clun/todos/"
 
 ```bash
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/
-mvn test -Dtest=com.datastaxdev.E04_MicronautController
+mvn test -Dtest=com.datastaxdev.E04_MicronautControllerTest
 ```
 
 ## 4.4 - Native Image

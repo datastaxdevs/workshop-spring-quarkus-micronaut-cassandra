@@ -12,14 +12,14 @@ cassandra:
         timeout: 5 seconds
       session-keyspace: ks_micronaut
       cloud:
-        #secure-connect-bundle: /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
-        secure-connect-bundle: /Users/cedricklunven/Downloads/secure-connect-workshops.zip
+        secure-connect-bundle: /workspace/workshop-spring-quarkus-micronaut-cassandra/secure-bundle-workshops.zip
+        #secure-connect-bundle: /Users/cedricklunven/Downloads/secure-connect-workshops.zip
     advanced:
       auth-provider:
         class: PlainTextAuthProvider
         username: token
-        #password: ${ASTRA_DB_APP_TOKEN}
-        password: AstraCS:gdZaqzmFZszaBTOlLgeecuPs:edd25600df1c01506f5388340f138f277cece2c93cb70f4b5fa386490daa5d44
+        password: ${ASTRA_DB_APP_TOKEN}
+        #password: AstraCS:gdZaqzmFZszaBTOlLgeecuPs:edd25600df1c01506f5388340f138f277cece2c93cb70f4b5fa386490daa5d44
       connection:
         init-query-timeout: 5 seconds          
         set-keyspace-timeout: 5 seconds
