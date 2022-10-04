@@ -651,10 +651,139 @@ You can package the image with the `-Pnative` option as below.
 cd /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/
 mvn clean package -DskipTests -Pnative
 ```
+
+> 🖥️ `OUTPUT`
+
+```
+INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.datastax.samples:lab3-quarkus >------------------
+[INFO] Building lab3-quarkus 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ lab3-quarkus ---
+[INFO] Deleting /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target
+[INFO] 
+[INFO] --- quarkus-maven-plugin:2.3.1.Final:generate-code (default) @ lab3-quarkus ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ lab3-quarkus ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ lab3-quarkus ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 10 source files to /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/classes
+[INFO] 
+[INFO] --- quarkus-maven-plugin:2.3.1.Final:generate-code-tests (default) @ lab3-quarkus ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ lab3-quarkus ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ lab3-quarkus ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M5:test (default-test) @ lab3-quarkus ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ lab3-quarkus ---
+[INFO] Building jar: /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/lab3-quarkus-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- quarkus-maven-plugin:2.3.1.Final:build (default) @ lab3-quarkus ---
+[INFO] [org.jboss.threads] JBoss Threads version 3.4.2.Final
+[WARNING] Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+[WARNING] Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+[WARNING] Error reading service account token from: [/var/run/secrets/kubernetes.io/serviceaccount/token]. Ignoring.
+[INFO] [io.quarkus.arc.processor.BeanProcessor] Found unrecommended usage of private members (use package-private instead) in application beans:
+        - @Inject field com.datastaxdev.todo.TodoRestController#cqlSession,
+        - @Inject field com.datastaxdev.todo.TodoRestController#uriInfo
+[WARNING] Micrometer metrics were enabled by configuration, but MicrometerMetricsFactory was not found.
+[WARNING] Make sure to include a dependency to the java-driver-metrics-micrometer module.
+[INFO] Checking for existing resources in: /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/src/main/kubernetes.
+[INFO] [io.quarkus.deployment.pkg.steps.JarResultBuildStep] Building native image source jar: /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/lab3-quarkus-0.0.1-SNAPSHOT-native-image-source-jar/lab3-quarkus-0.0.1-SNAPSHOT-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Building native image from /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/lab3-quarkus-0.0.1-SNAPSHOT-native-image-source-jar/lab3-quarkus-0.0.1-SNAPSHOT-runner.jar
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Running Quarkus native-image plugin on GraalVM 22.1.0 Java 11 CE (Java Version 11.0.15+10-jvmci-22.1-b06)
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildRunner] /home/gitpod/.sdkman/candidates/java/22.1.0.r11-grl/bin/native-image -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=3 -J-Duser.language=en -J-Duser.country=US -J-Dfile.encoding=UTF-8 -H:InitialCollectionPolicy=com.oracle.svm.core.genscavenge.CollectionPolicy\$BySpaceAndTime -H:+JNI -H:+AllowFoldMethods -H:FallbackThreshold=0 -H:+ReportExceptionStackTraces -H:-AddAllCharsets -H:EnableURLProtocols=http,https -H:NativeLinkerOption=-no-pie -H:-UseServiceLoaderFeature -H:+StackTrace -H:-ParseOnce lab3-quarkus-0.0.1-SNAPSHOT-runner -jar lab3-quarkus-0.0.1-SNAPSHOT-runner.jar
+======================================================================================================
+GraalVM Native Image: Generating 'lab3-quarkus-0.0.1-SNAPSHOT-runner' (executable)...
+======================================================================================================
+[1/7] Initializing...                                                                  (7.4s @ 0.17GB)
+ Version info: 'GraalVM 22.1.0 Java 11 CE'
+ C compiler: gcc (linux, x86_64, 9.4.0)
+ Garbage collector: Serial GC
+ 2 user-provided feature(s)
+  - io.quarkus.runner.AutoFeature
+  - io.quarkus.runtime.graal.ResourcesFeature
+[2/7] Performing analysis...  [16:42:29,870 INFO  [com.dat.oss.dri.int.cor.DefaultMavenCoordinates] DataStax Java driver for Apache Cassandra(R) (com.datastax.oss:java-driver-core) version 4.13.0
+*16:43:19,387 INFO  [org.jbo.threads] JBoss Threads version 3.4.2.Final
+**********]                                           (97.6s @ 2.24GB)
+  14,423 (90.29%) of 15,974 classes reachable
+  21,418 (64.47%) of 33,223 fields reachable
+  72,082 (58.89%) of 122,398 methods reachable
+     477 classes,    42 fields, and 1,633 methods registered for reflection
+      68 classes,    88 fields, and    54 methods registered for JNI access
+[3/7] Building universe...                                                             (6.7s @ 2.88GB)
+[4/7] Parsing methods...      [*****]                                                 (26.7s @ 1.92GB)
+[5/7] Inlining methods...     [*****]                                                 (17.5s @ 4.86GB)
+[6/7] Compiling methods...    [***********]                                          (137.3s @ 4.31GB)
+[7/7] Creating image...                                                                (7.2s @ 2.04GB)
+  27.50MB (44.39%) for code area:   46,659 compilation units
+  27.61MB (44.57%) for image heap:  10,057 classes and 328,598 objects
+   6.84MB (11.04%) for other data
+  61.95MB in total
+------------------------------------------------------------------------------------------------------
+Top 10 packages in code area:                      Top 10 object types in image heap:
+   1.75MB sun.security.ssl                            6.30MB byte[] for code metadata
+   1.11MB com.esri.core.geometry                      3.54MB java.lang.Class
+   1.04MB java.util                                   2.95MB java.lang.String
+ 715.53KB com.sun.crypto.provider                     2.76MB byte[] for general heap data
+ 484.63KB sun.security.x509                           2.69MB byte[] for java.lang.String
+ 476.36KB io.quarkus.runtime.generated                1.32MB c.o.svm.core.hub.DynamicHubCompanion
+ 476.25KB java.util.concurrent                      867.19KB java.util.HashMap$Node
+ 429.23KB java.lang                                 641.52KB byte[] for reflection metadata
+ 424.57KB io.netty.buffer                           609.70KB java.lang.String[]
+ 419.94KB com.typesafe.config.impl                  398.88KB java.util.HashMap$Node[]
+      ... 635 additional packages                        ... 3440 additional object types
+                                  (use GraalVM Dashboard to see all)
+------------------------------------------------------------------------------------------------------
+               28.4s (9.1% of total time) in 36 GCs | Peak RSS: 6.95GB | CPU load: 2.00
+------------------------------------------------------------------------------------------------------
+Produced artifacts:
+ /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/lab3-quarkus-0.0.1-SNAPSHOT-native-image-source-jar/lab3-quarkus-0.0.1-SNAPSHOT-runner (executable)
+ /workspace/workshop-spring-quarkus-micronaut-cassandra/lab3_quarkus/target/lab3-quarkus-0.0.1-SNAPSHOT-native-image-source-jar/lab3-quarkus-0.0.1-SNAPSHOT-runner.build_artifacts.txt
+======================================================================================================
+Finished generating 'lab3-quarkus-0.0.1-SNAPSHOT-runner' in 5m 10s.
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildRunner] objcopy --strip-debug lab3-quarkus-0.0.1-SNAPSHOT-runner
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 315900ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  05:27 min
+[INFO] Finished at: 2022-10-04T16:47:29Z
+[INFO] ------------------------------------------------------------------------
+```
+
 and you can run it as below
 
 ```
 ./target/lab3-quarkus-0.0.1-SNAPSHOT-runner
+```
+
+> 🖥️ `OUTPUT`
+
+```
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2022-10-04 16:48:45,719 INFO  [com.dat.oss.dri.int.cor.os.Native] (vert.x-eventloop-thread-0) Using Graal-specific native functions
+2022-10-04 16:48:45,719 INFO  [com.dat.oss.dri.int.cor.tim.Clock] (vert.x-eventloop-thread-0) Using native clock for microsecond precision
+2022-10-04 16:48:47,087 INFO  [com.dat.oss.dri.int.cor.ses.DefaultSession] (vert.x-eventloop-thread-8) [s0] Negotiated protocol version V4 for the initial contact point, but cluster seems to support V5, keeping the negotiated version
+2022-10-04 16:48:48,001 INFO  [com.dat.oss.qua.run.int.qua.CassandraClientStarter] (main) Eagerly initializing Quarkus Cassandra client.
+2022-10-04 16:48:48,005 INFO  [io.quarkus] (main) lab3-quarkus 0.0.1-SNAPSHOT native (powered by Quarkus 2.3.1.Final) started in 2.610s. Listening on: http://0.0.0.0:8081
+2022-10-04 16:48:48,005 INFO  [io.quarkus] (main) Profile prod activated. 
+2022-10-04 16:48:48,005 INFO  [io.quarkus] (main) Installed features: [cassandra-client, cdi, kubernetes, micrometer, resteasy-reactive, resteasy-reactive-jackson, smallrye-context-propagation, smallrye-health, smallrye-openapi, vertx]
 ```
 
 # LAB 4 - Micronaut Cassandra
