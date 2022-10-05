@@ -24,6 +24,7 @@ Welcome to the *Explore SpringBoot, Quarkus and Micronaut microservices with NoS
 - [LAB2 - Spring Boot and Spring Data Cassandra](#lab-2---spring-data-cassandra)
 - [LAB3 - Quarkus](#lab-3---cassandra-quarkus-extension)
 - [LAB4 - Micronaut](#lab-4---micronaut-cassandra)
+- [Homework](#Homework)
 <p>
 
 ## Objectives
@@ -1039,12 +1040,27 @@ native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.data
 gp preview "$(gp url 8082)/api/v1/clun/todos/"
 ```
 
-# Homeworks
+## Homeworks
 
-dsfdsfdsfdsfdsfds
+To submit the **homework**, please take a screenshot in gitpod with the result of lab `4.3` where you micronaut application return some TODO, no need to go native.
+
+Don't forget to [submit your homework](https://dtsx.io/homework-spring-quarkus-micronaut) and be awarded a nice verified badge!
+
+## What's NEXT ?
+
+We've just scratched the surface of what you can do using Astra DB, built on Apache Pulsar and Cassandra.
+
+Go take a look at [DataStax for Developers](https://www.datastax.com/dev) to see what else is possible.
+
+There's plenty to dig into!
+
+Congratulations: you made to the end of today's workshop.
+
+Don't forget to [submit your homework](https://dtsx.io/homework-spring-quarkus-micronaut) and be awarded a nice verified badge!
 
 
+<img src="img/badge.png?raw=true" width="350" />
 
-
-## The END.
+----
+**... and see you at our next workshop!**
 
