@@ -1026,6 +1026,11 @@ mvn package -Dpackaging=native-image -Pgraalvm -DskipTests
 native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication target/todo-micronaut
 ```
 
+# Homeworks
+
+dsfdsfdsfdsfdsfds
+
+
 
 - Run the Native
 
