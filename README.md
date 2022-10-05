@@ -1,6 +1,6 @@
 ## 🎓 Spring, Quarkus and Micronaut with Apache Cassandra
 
-<img src="img/badge.png?raw=true" width="150" align="right" />
+<img src="img/badge.png?raw=true" width="150" align="right" >
 
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
@@ -83,7 +83,7 @@ Attending the session is not enough. You need to complete the homework detailed 
 It doesn't matter if you join our workshop live or you prefer to work at your own pace,
 we have you covered. In this repository, you'll find everything you need for this workshop:
 
-- [Slide deck](/slides/slides.pdf)
+- [Slide deck](/slides.pdf)
 - [Discord chat](https://dtsx.io/discord)
 - [Questions and Answers](https://community.datastax.com/)
 - [Twitch backup](https://www.twitch.tv/datastaxdevs)
@@ -1026,11 +1026,6 @@ mvn package -Dpackaging=native-image -Pgraalvm -DskipTests
 native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication target/todo-micronaut
 ```
 
-# Homeworks
-
-dsfdsfdsfdsfdsfds
-
-
 
 - Run the Native
 
@@ -1043,6 +1038,13 @@ dsfdsfdsfdsfdsfds
 ```
 gp preview "$(gp url 8082)/api/v1/clun/todos/"
 ```
+
+# Homeworks
+
+dsfdsfdsfdsfdsfds
+
+
+
 
 ## The END.
 
