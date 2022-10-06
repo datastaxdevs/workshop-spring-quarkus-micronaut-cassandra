@@ -109,6 +109,12 @@ Skip this step is you already have a token. You can reuse the same token in our 
 |---|---|
 |**Role**| `Database Administrator` |
 
+> **⚠️ Important**
+> ```
+> The instructor will show you on screen how to create a token 
+> but will have to destroy to token immediately for security reasons.
+> ```
+
 ![token](https://awesome-astra.github.io/docs/img/astra/astra-create-token.gif)
 
 
