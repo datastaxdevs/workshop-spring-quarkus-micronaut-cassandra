@@ -6,11 +6,11 @@ import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.mapping.CassandraPersistentEntity;
 import org.springframework.data.cassandra.repository.support.MappingCassandraEntityInformation;
 import org.springframework.data.cassandra.repository.support.SimpleCassandraRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 
-@Repository
+@Service
 public class TodoRepositorySimpleCassandra extends SimpleCassandraRepository<TodoEntity, UUID> {
 
     protected final CqlSession cqlSession;

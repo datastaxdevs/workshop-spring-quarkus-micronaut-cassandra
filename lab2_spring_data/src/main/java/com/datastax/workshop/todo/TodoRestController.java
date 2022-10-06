@@ -37,9 +37,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/todos/")
 public class TodoRestController {
     
-    private TodoRepositoryCassandra repo;
+    private TodoRepositorySimpleCassandra repo;
     
-    public TodoRestController(TodoRepositoryCassandra todoRepo) {
+    public TodoRestController(TodoRepositorySimpleCassandra todoRepo) {
         this.repo = todoRepo;
     }
     

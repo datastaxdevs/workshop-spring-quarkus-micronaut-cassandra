@@ -23,6 +23,9 @@ public class E03_SpringDataCassandraOperations {
     @Autowired
     CqlSession cqlSession;
     
+    @Autowired
+    TodoRepositorySimpleCassandra todoRepoSimple;
+    
     @Test
     public void testCassandraOperations() {
         LOGGER.info("Utilisation de CassandraOperations");
@@ -34,8 +37,8 @@ public class E03_SpringDataCassandraOperations {
     
     @Test
     public void testSimpleCassandraRepository() {
-        TodoRepositorySimpleCassandra todoRepoSimple = 
-                new TodoRepositorySimpleCassandra(cqlSession, cassandraOps);
+        //TodoRepositorySimpleCassandra todoRepoSimple = 
+        //        new TodoRepositorySimpleCassandra(cqlSession, cassandraOps);
         TodoEntity e = todoRepoSimple.save(new TodoEntity("Apprendre Cassandra", 0));
         LOGGER.info("Tache enregistree avec id {}", e.getUid());
         
