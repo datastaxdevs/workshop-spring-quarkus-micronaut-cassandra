@@ -1024,15 +1024,8 @@ gp open /workspace/workshop-spring-quarkus-micronaut-cassandra/lab4_micronaut/sr
 - Compile as native image
 
 ```
-mvn package -Dpackaging=native-image -Pgraalvm -DskipTests
+mvn package -Dpackaging=native-image
 ```
-
-- Then 
-
-```
-native-image --no-server -cp ./target/lab4-micronaut-0.0.1-SNAPSHOT.jar com.datastaxdev.TodoApplication target/todo-micronaut
-```
-
 
 - Run the Native
 
